@@ -21,7 +21,6 @@ const EditBlogForm = () => {
       <div>
         <input
           type="text"
-          data-testid="input"
           value={data}
           onChange={(e) => setBlogText(e.target.value)}
         />

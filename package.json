@@ -1,6 +1,6 @@
 {
   "name": "react-autosave",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Autosave controlled form values with style",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
@@ -18,6 +18,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "react",
+    "autosave",
+    "form"
+  ],
   "scripts": {
     "build": "rollup -c",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",

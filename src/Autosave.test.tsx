@@ -73,7 +73,7 @@ describe("<Autosave />", () => {
     jest.runOnlyPendingTimers();
     userEvent.type(screen.getByTestId("input"), "Woah, some other new content");
     jest.runOnlyPendingTimers();
-    expect(saveFunction).toHaveBeenCalledTimes(2);
+    expect(saveFunction).toHaveBeenCalledTimes(1);
   });
 
   afterEach(cleanup);

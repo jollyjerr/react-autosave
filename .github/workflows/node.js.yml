@@ -30,4 +30,4 @@ jobs:
     - run: yarn
     - run: yarn test
     - run: yarn build
-    - run: curl -s https://codecov.io/bash
+    - run: <(curl -s https://codecov.io/bash)

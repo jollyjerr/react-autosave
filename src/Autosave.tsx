@@ -1,9 +1,9 @@
 import React from "react";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 
 type Props<T, R> = {
   data: T;
-  saveFunction: (data: T) => Promise<R>;
+  onSave: (data: T) => Promise<R>;
   interval?: number;
   onError?: Function;
   onSuccess?: Function;
@@ -11,7 +11,29 @@ type Props<T, R> = {
 
 const Autosave = <T extends unknown, R extends unknown>({
   data,
-}: Props<T, R>) => {
+  onSave,
+  interval = 2000,
+  onError = console.error,
+  onSuccess,
+}: Props<T, R>): JSX.Element => {
+  const debouncedSave = React.useCallback(
+    debounce(async (data: T) => {
+      try {
+        const resp = await onSave(data);
+        if (onSuccess) {
+          onSuccess(resp);
+        }
+      } catch (error) {
+        onError(error);
+      }
+    }, interval),
+    [],
+  );
+  React.useEffect(() => {
+    if (data) {
+      debouncedSave(data);
+    }
+  }, [data, debouncedSave]);
   return null;
 };
 

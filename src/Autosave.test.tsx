@@ -4,6 +4,6 @@ import { render } from "@testing-library/react";
 
 describe("<Autosave />", () => {
   it("Renders without crashing", () => {
-    render(<Autosave data="hi" saveFunction={jest.fn()} />);
+    render(<Autosave data="hi" onSave={jest.fn()} />);
   });
 });

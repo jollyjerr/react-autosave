@@ -1,14 +1,17 @@
 {
-  "name": "@jollyjerr/react-autosave",
-  "version": "0.1.0",
+  "name": "react-autosave",
+  "version": "0.1.3",
   "description": "Autosave controlled form values with style",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
+  "main": "index.js",
+  "module": "index.es.js",
   "files": [
-    "build"
+    "Autosave.d.ts",
+    "index.d.ts",
+    "index.es.js",
+    "index.js"
   ],
   "types": "dist/index.d.ts",
   "private": false,
@@ -20,7 +23,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "test": "jest",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build && cp -r ./build/* . && rm -rf ./build",
+    "postpublish": "git clean -fd"
   },
   "dependencies": {
     "lodash": "^4.17.20"

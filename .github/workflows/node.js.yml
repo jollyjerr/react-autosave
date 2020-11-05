@@ -17,6 +17,9 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x]
+    
+    env:
+      CODECOV_TOKEN: 6285fe9e-6f7f-4c56-a89a-a61115f2af0c
 
     steps:
     - uses: actions/checkout@v2
@@ -27,3 +30,4 @@ jobs:
     - run: yarn
     - run: yarn test
     - run: yarn build
+    - run: curl -s https://codecov.io/bash

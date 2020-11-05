@@ -7,7 +7,9 @@
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.es.js",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "types": "dist/index.d.ts",
   "private": false,
   "publishConfig": {
@@ -20,7 +22,9 @@
     "test": "jest",
     "prepublishOnly": "yarn build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -29,6 +33,7 @@
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@testing-library/react": "^11.0.0",
     "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.164",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "babel-jest": "^26.6.3",

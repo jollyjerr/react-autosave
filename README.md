@@ -5,7 +5,7 @@
 
 > Auto save controlled form values as they are updated.
 
-Credit were credit is due - this library was inspired from [this blog post](https://www.synthace.com/autosave-with-react-hooks/)
+Credit where credit is due - this library was inspired from [this blog post](https://www.synthace.com/autosave-with-react-hooks/)
 
 ```jsx
 import React from "react";

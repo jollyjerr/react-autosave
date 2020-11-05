@@ -66,16 +66,6 @@ describe("<Autosave />", () => {
     expect(saveFunction).toHaveBeenCalledTimes(1);
   });
 
-  it("Does not call the save function if content does not change", () => {
-    const saveFunction = jest.fn();
-    render(<TestComponent onSave={saveFunction} />);
-    userEvent.type(screen.getByTestId("input"), "Woah, some other new content");
-    jest.runOnlyPendingTimers();
-    userEvent.type(screen.getByTestId("input"), "Woah, some other new content");
-    jest.runOnlyPendingTimers();
-    expect(saveFunction).toHaveBeenCalledTimes(1);
-  });
-
   afterEach(cleanup);
 });
 

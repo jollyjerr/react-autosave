@@ -1,67 +1,65 @@
 {
-  "name": "react-autosave",
-  "version": "0.1.5",
-  "description": "Autosave controlled form values with style",
-  "repository": "https://github.com/jollyjerr/react-autosave",
-  "author": "jollyjerr <jollyjerr@gmail.com>",
-  "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
-  "files": [
-    "Autosave.d.ts",
-    "index.d.ts",
-    "index.es.js",
-    "index.js"
-  ],
-  "types": "dist/index.d.ts",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "react",
-    "autosave",
-    "form"
-  ],
-  "scripts": {
-    "build": "rollup -c",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
-    "test": "jest",
-    "prepublishOnly": "yarn build && cp -r ./build/* . && rm -rf ./build",
-    "postpublish": "git clean -fd"
-  },
-  "dependencies": {
-    "lodash": "^4.17.20"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@testing-library/dom": "^7.26.5",
-    "@testing-library/react": "^11.0.0",
-    "@testing-library/user-event": "^12.2.0",
-    "@types/jest": "^26.0.15",
-    "@types/lodash": "^4.14.164",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
-    "prettier": "^2.0.5",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
-    "rollup": "^2.33.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "ts-jest": "^26.4.3",
-    "tslib": "^2.0.3",
-    "typescript": "^4.0.0"
-  },
-  "peerDependencies": {
-    "react": "^17.x.x || ^16.x.x",
-    "react-dom": "^17.x.x || ^16.x.x"
-  }
+    "name": "react-autosave",
+    "version": "0.2.0",
+    "description": "A super simple debouncing component/hook to auto save controlled form values as they are updated",
+    "repository": "https://github.com/jollyjerr/react-autosave",
+    "author": "jollyjerr <jollyjerr@gmail.com>",
+    "license": "MIT",
+    "main": "build/index.js",
+    "module": "build/index.es.js",
+    "files": [
+        "Autosave.d.ts",
+        "index.d.ts",
+        "index.es.js",
+        "index.js"
+    ],
+    "types": "dist/index.d.ts",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "react",
+        "autosave",
+        "form"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+        "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+        "test": "jest",
+        "prepublishOnly": "yarn build && cp -r ./build/* . && rm -rf ./build",
+        "postpublish": "git clean -fd"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@babel/core": "^7.12.3",
+        "@babel/preset-env": "^7.12.1",
+        "@babel/preset-react": "^7.12.5",
+        "@rollup/plugin-commonjs": "^16.0.0",
+        "@rollup/plugin-node-resolve": "^10.0.0",
+        "@testing-library/dom": "^7.26.5",
+        "@testing-library/react": "^11.0.0",
+        "@testing-library/user-event": "^12.2.0",
+        "@types/jest": "^26.0.15",
+        "@types/lodash": "^4.14.164",
+        "@types/react": "^16.9.49",
+        "@types/react-dom": "^16.9.8",
+        "babel-jest": "^26.6.3",
+        "jest": "^26.6.3",
+        "prettier": "^2.0.5",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-test-renderer": "^17.0.1",
+        "rollup": "^2.33.1",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-typescript2": "^0.29.0",
+        "ts-jest": "^26.4.3",
+        "tslib": "^2.0.3",
+        "typescript": "^4.0.0"
+    },
+    "peerDependencies": {
+        "react": "^17.x.x || ^16.x.x",
+        "react-dom": "^17.x.x || ^16.x.x"
+    }
 }

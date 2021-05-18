@@ -1,13 +1,12 @@
 import React from "react";
-import { AutosaveProps } from "./props";
+import { CommonProps } from "./props";
 import useDebounce from "./useDebounce";
 
-const Autosave = <TData extends unknown, TReturn extends unknown>({
+const useAutosave = <TData extends unknown, TReturn extends unknown>({
   data,
   onSave,
   interval = 2000,
-  element = <></>,
-}: AutosaveProps<TData, TReturn>) => {
+}: CommonProps<TData, TReturn>) => {
   const initialRender = React.useRef(true);
   const debouncedValueToSave = useDebounce(data, interval);
   React.useEffect(() => {
@@ -19,7 +18,6 @@ const Autosave = <TData extends unknown, TReturn extends unknown>({
       }
     }
   }, [debouncedValueToSave, interval, onSave]);
-  return element;
 };
 
-export default Autosave;
+export default useAutosave;

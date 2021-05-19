@@ -14,7 +14,6 @@
         "index.js"
     ],
     "types": "dist/index.d.ts",
-    "private": false,
     "publishConfig": {
         "access": "public"
     },
@@ -31,7 +30,6 @@
         "prepublishOnly": "yarn build && cp -r ./build/* . && rm -rf ./build",
         "postpublish": "git clean -fd"
     },
-    "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.12.3",
         "@babel/preset-env": "^7.12.1",

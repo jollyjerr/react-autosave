@@ -7,6 +7,11 @@
 
 > A super simple debouncing component/hook to auto save controlled form values as they are updated.
 
+react-autosave is an extremely lightweight component or hook that periodically triggers a callback function if, and only if, the value to update has changed.
+Typically, this is used to make API calls when a user stops typing for a second in some input, but you could technically use this for any side effect you wanted to debounce. 🎉
+
+## Examples
+
 ```jsx
 import React from "react";
 import axios from "axios";
@@ -46,7 +51,29 @@ const EditBlogFormWithHook = () => {
 };
 ```
 
-react-autosave is an extremely lightweight component that periodically triggers an async callback function if, and only if, the value to update has changed.
+Notice that the callback function **needs to be memoized**. If you are declaring the function within your component, wrap it in a use callback:
+
+```tsx
+const EditBlogFormWithHook = () => {
+  const [blogText, setBlogText] = React.useState("hello world");
+
+  // https://reactjs.org/docs/hooks-reference.html#usecallback
+  const updateBlog = React.useCallback((newText: string) => {
+    axios.post("myapi/blog/123", { text: newText }).catch(console.error);
+  }, []);
+
+  useAutosave({ data: blogText, onSave: updateBlog });
+  return (
+    <div>
+      <input
+        type="text"
+        value={blogText}
+        onChange={(e) => setBlogText(e.target.value)}
+      />
+    </div>
+  );
+};
+```
 
 ## Features
 

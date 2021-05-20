@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationMap": true,
     "declarationDir": "build",
     "module": "esnext",
     "target": "es5",
@@ -12,9 +13,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "src/**/*.test.tsx"
-  ]
+  "exclude": ["node_modules", "build", "src/**/*.test.tsx"]
 }

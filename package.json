@@ -9,9 +9,17 @@
   "module": "build/index.es.js",
   "files": [
     "Autosave.d.ts",
+    "Autosave.d.ts.map",
     "index.d.ts",
+    "index.d.ts.map",
     "index.es.js",
-    "index.js"
+    "index.js",
+    "props.d.ts",
+    "props.d.ts.map",
+    "useAutosave.d.ts",
+    "useAutosave.d.ts.map",
+    "useDebounce.d.ts",
+    "useDebounce.d.ts.map"
   ],
   "types": "dist/index.d.ts",
   "publishConfig": {

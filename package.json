@@ -1,6 +1,6 @@
 {
   "name": "react-autosave",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A super simple debouncing component/hook to auto save controlled form values as they are updated",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",

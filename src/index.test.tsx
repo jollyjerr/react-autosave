@@ -89,7 +89,8 @@ type TestProps = {
 };
 const TestComponent = ({ onSave }: TestProps) => {
   const [data, setdata] = React.useState('hello world');
-  return (
+  const [showForm, setShowForm] = React.useState(true);
+  return showForm ? (
     <div>
       <input
         type="text"
@@ -98,7 +99,18 @@ const TestComponent = ({ onSave }: TestProps) => {
         onChange={(e) => setdata(e.target.value)}
       />
       <Autosave data={data} interval={1} onSave={onSave} />
+      <button
+        type="button"
+        data-testid="unmount"
+        onClick={() => {
+          setShowForm(false);
+        }}
+      >
+        Unmount
+      </button>
     </div>
+  ) : (
+    <div data-testid="newpage">A new page!</div>
   );
 };
 
@@ -135,6 +147,17 @@ describe('<Autosave />', () => {
       jest.runAllTimers();
     });
     expect(saveFunction).toHaveBeenCalledTimes(1);
+  });
+
+  it('Calls the save function when being unmounted', async () => {
+    const saveFunction = jest.fn();
+    render(<TestComponent onSave={saveFunction} />);
+    await act(async () => {
+      await userEvent.type(screen.getByTestId('input'), 'Some new content');
+      jest.runAllTimers();
+      userEvent.click(screen.getByTestId('unmount'));
+    });
+    expect(saveFunction).toHaveBeenCalledTimes(2);
   });
 
   afterEach(cleanup);

@@ -7,6 +7,7 @@ const useAutosave = <TData extends unknown, TReturn extends unknown>({
   onSave,
   interval = 2000,
 }: CommonProps<TData, TReturn>) => {
+  const valueOnCleanup = React.useRef(data);
   const initialRender = React.useRef(true);
   const debouncedValueToSave = useDebounce(data, interval);
   React.useEffect(() => {
@@ -16,6 +17,14 @@ const useAutosave = <TData extends unknown, TReturn extends unknown>({
       onSave(debouncedValueToSave);
     }
   }, [debouncedValueToSave, onSave]);
+  React.useEffect(() => {
+    valueOnCleanup.current = data;
+  }, [data]);
+  React.useEffect(() => {
+    return () => {
+      onSave(valueOnCleanup.current);
+    };
+  }, [onSave]);
 };
 
 export default useAutosave;

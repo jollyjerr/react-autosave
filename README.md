@@ -75,13 +75,21 @@ const EditBlogFormWithHook = () => {
 };
 ```
 
+## Installation
+
+```sh
+yarn add react-autosave
+# or with npm...
+npm i react-autosave
+```
+
 ## Features
 
 1. Written in typescript.
 
 2. Lightweight and simple.
 
-3. No external libraries.
+3. No dependencies.
 
 ## API
 

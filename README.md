@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/dm/react-autosave)
 ![minified size](https://img.shields.io/bundlephobia/min/react-autosave?color=green)
 
-> A super simple debouncing component/hook to auto save controlled form values as they are updated.
+> An automagic component and hook to auto save controlled form values as they are updated.
 
 react-autosave is an extremely lightweight component or hook that periodically triggers a callback function if, and only if, the value to update has changed.
 Typically, this is used to make API calls when a user stops typing for a second in some input, but you could technically use this for any side effect you wanted to debounce. 🎉
@@ -13,16 +13,16 @@ Typically, this is used to make API calls when a user stops typing for a second 
 ## Examples
 
 ```jsx
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
-import { Autosave, useAutosave } from "react-autosave";
+import { Autosave, useAutosave } from 'react-autosave';
 
-const updateBlog = (data) => axios.post("myapi/blog/123", { text: data });
+const updateBlog = (data) => axios.post('myapi/blog/123', { text: data });
 
 // Via component
 const EditBlogForm = () => {
-  const [blogText, setBlogText] = React.useState("hello world");
+  const [blogText, setBlogText] = React.useState('hello world');
   return (
     <div>
       <input
@@ -37,7 +37,7 @@ const EditBlogForm = () => {
 
 // Via hook
 const EditBlogFormWithHook = () => {
-  const [blogText, setBlogText] = React.useState("hello world");
+  const [blogText, setBlogText] = React.useState('hello world');
   useAutosave({ data: blogText, onSave: updateBlog });
   return (
     <div>
@@ -55,11 +55,11 @@ Notice that the callback function **needs to be memoized**. If you are declaring
 
 ```tsx
 const EditBlogFormWithHook = () => {
-  const [blogText, setBlogText] = React.useState("hello world");
+  const [blogText, setBlogText] = React.useState('hello world');
 
   // https://reactjs.org/docs/hooks-reference.html#usecallback
   const updateBlog = React.useCallback((newText: string) => {
-    axios.post("myapi/blog/123", { text: newText }).catch(console.error);
+    axios.post('myapi/blog/123', { text: newText }).catch(console.error);
   }, []);
 
   useAutosave({ data: blogText, onSave: updateBlog });
@@ -87,8 +87,8 @@ const EditBlogFormWithHook = () => {
 
 | Prop                |         Type         |                                                        Description |
 | ------------------- | :------------------: | -----------------------------------------------------------------: |
-| data                |          T           |                         The controlled form value to be auto saved |
-| onSave              | (data: T) => Promise |                            The callback function to save your data |
+| data                |        TData         |                         The controlled form value to be auto saved |
+| onSave              | (data: TData) => any |                            The callback function to save your data |
 | interval (optional) |        number        | The number of milliseconds between save attempts. Defaults to 2000 |
 
 ### Contributing

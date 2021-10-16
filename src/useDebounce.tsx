@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const useDebounce = <T extends unknown>(data: T, interval: number) => {
   const [liveData, setLiveData] = React.useState<T>(data);
 
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const handler = window.setTimeout(() => {
         setLiveData(data);
       }, interval);

@@ -1,16 +1,16 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from '@testing-library/react';
 
-import Autosave from "./Autosave";
-import React from "react";
-import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
-import useDebounce from "./useDebounce";
-import useAutosave from "./useAutosave";
+import React from 'react';
+import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
+import Autosave from './Autosave';
+import useDebounce from './useDebounce';
+import useAutosave from './useAutosave';
 
 jest.useFakeTimers();
 
 const DebounceComponent = () => {
-  const [data, setdata] = React.useState("hello world");
+  const [data, setdata] = React.useState('hello world');
   const value = useDebounce(data, 1);
   return (
     <div>
@@ -25,22 +25,22 @@ const DebounceComponent = () => {
   );
 };
 
-describe("useDebounce", () => {
-  it("Debounces data being updated", () => {
+describe('useDebounce', () => {
+  it('Debounces data being updated', () => {
     render(<DebounceComponent />);
-    userEvent.type(screen.getByTestId("input"), "Some new content");
-    expect(screen.queryAllByText("hello world Some new content").length).toBe(
+    userEvent.type(screen.getByTestId('input'), 'Some new content');
+    expect(screen.queryAllByText('hello world Some new content').length).toBe(
       0,
     );
   });
 
-  it("Updates after debounce", () => {
+  it('Updates after debounce', () => {
     render(<DebounceComponent />);
-    userEvent.type(screen.getByTestId("input"), " Some new content");
+    userEvent.type(screen.getByTestId('input'), ' Some new content');
     act(() => {
       jest.runAllTimers();
     });
-    expect(screen.queryAllByText("hello world Some new content").length).toBe(
+    expect(screen.queryAllByText('hello world Some new content').length).toBe(
       1,
     );
   });
@@ -49,7 +49,7 @@ describe("useDebounce", () => {
 });
 
 const UseAutosaveComponent = ({ onSave }: { onSave: () => any }) => {
-  const [text, setText] = React.useState("hello world");
+  const [text, setText] = React.useState('hello world');
   useAutosave({ data: text, onSave, interval: 1 });
   return (
     <div>
@@ -63,19 +63,19 @@ const UseAutosaveComponent = ({ onSave }: { onSave: () => any }) => {
   );
 };
 
-describe("useAutosave", () => {
-  it("Does not try and save new data onChange", () => {
+describe('useAutosave', () => {
+  it('Does not try and save new data onChange', () => {
     const saveFunction = jest.fn();
     render(<UseAutosaveComponent onSave={saveFunction} />);
-    userEvent.type(screen.getByTestId("input"), "Some new content");
+    userEvent.type(screen.getByTestId('input'), 'Some new content');
     expect(saveFunction).not.toHaveBeenCalled();
   });
 
-  it("Calls a save function when given time", () => {
+  it('Calls a save function when given time', () => {
     const saveFunction = jest.fn();
     render(<UseAutosaveComponent onSave={saveFunction} />);
     act(() => {
-      userEvent.type(screen.getByTestId("input"), "Some new content");
+      userEvent.type(screen.getByTestId('input'), 'Some new content');
       jest.runAllTimers();
     });
     expect(saveFunction).toHaveBeenCalledTimes(1);
@@ -86,10 +86,9 @@ describe("useAutosave", () => {
 
 type TestProps = {
   onSave: (data: any) => Promise<any>;
-  interval?: number;
 };
-const TestComponent = ({ onSave, interval: _ }: TestProps) => {
-  const [data, setdata] = React.useState("hello world");
+const TestComponent = ({ onSave }: TestProps) => {
+  const [data, setdata] = React.useState('hello world');
   return (
     <div>
       <input
@@ -103,14 +102,14 @@ const TestComponent = ({ onSave, interval: _ }: TestProps) => {
   );
 };
 
-describe("<Autosave />", () => {
-  it("Renders without crashing", () => {
+describe('<Autosave />', () => {
+  it('Renders without crashing', () => {
     render(<Autosave data="examplestring" onSave={jest.fn()} />);
   });
 
-  it("Is generic", () => {
+  it('Is generic', () => {
     interface CustomInterface {
-      something: "complicated" | "simple";
+      something: 'complicated' | 'simple';
     }
     const testCustomInterface = (
       <Autosave<CustomInterface, number>
@@ -121,18 +120,18 @@ describe("<Autosave />", () => {
     render(testCustomInterface);
   });
 
-  it("Does not try and save new data onChange", () => {
+  it('Does not try and save new data onChange', () => {
     const saveFunction = jest.fn();
     render(<TestComponent onSave={saveFunction} />);
-    userEvent.type(screen.getByTestId("input"), "Some new content");
+    userEvent.type(screen.getByTestId('input'), 'Some new content');
     expect(saveFunction).not.toHaveBeenCalled();
   });
 
-  it("Calls the save function when given time", () => {
+  it('Calls the save function when given time', () => {
     const saveFunction = jest.fn();
     render(<TestComponent onSave={saveFunction} />);
     act(() => {
-      userEvent.type(screen.getByTestId("input"), "Some new content");
+      userEvent.type(screen.getByTestId('input'), 'Some new content');
       jest.runAllTimers();
     });
     expect(saveFunction).toHaveBeenCalledTimes(1);

@@ -1,19 +1,19 @@
-import commonjs from "@rollup/plugin-commonjs";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import pkg from "./package.json";
-import resolve from "@rollup/plugin-node-resolve";
-import typescript from "rollup-plugin-typescript2";
+import commonjs from '@rollup/plugin-commonjs';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
+import pkg from './package.json';
 
 export default {
-  input: "src/index.tsx",
+  input: 'src/index.tsx',
   output: [
     {
       file: pkg.main,
-      format: "cjs",
+      format: 'cjs',
     },
     {
       file: pkg.module,
-      format: "es",
+      format: 'es',
     },
   ],
   external: [

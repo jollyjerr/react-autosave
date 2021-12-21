@@ -5,8 +5,8 @@
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
+  "main": "index.js",
+  "module": "index.es.js",
   "files": [
     "Autosave.d.ts",
     "Autosave.d.ts.map",

@@ -54,6 +54,7 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "^4.30.0",
+    "@yarnpkg/sdks": "^2.5.1-rc.6",
     "babel-jest": "^26.6.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "latest",
@@ -79,5 +80,6 @@
   "peerDependencies": {
     "react": "^17.x.x || ^16.x.x",
     "react-dom": "^17.x.x || ^16.x.x"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }

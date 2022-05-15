@@ -5,8 +5,8 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import useAutosave from './useAutosave';
 
-function UseAutosaveComponent({ onSave }: { onSave: () => any }) {
-  const [text, setText] = React.useState('hello world');
+function UseAutosaveComponent({ onSave, initialState = 'hello world' }: { onSave: () => any, initialState?: string }) {
+  const [text, setText] = React.useState(initialState);
   useAutosave({ data: text, onSave });
   return (
     <div>
@@ -44,6 +44,21 @@ describe('useAutosave', () => {
     });
 
     expect(saveFunction).toHaveBeenCalledTimes(1);
+    vi.clearAllMocks();
+  });
+
+  it('Calls save function for falsy values', async () => {
+    vi.useFakeTimers();
+    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const saveFunction = vi.fn();
+    render(<UseAutosaveComponent onSave={saveFunction} initialState={'1'} />);
+
+    await user.type(screen.getByTestId('input'), '{backspace}');
+    act(() => {
+      vi.runAllTimers();
+    });
+
+    expect(saveFunction).toBeCalledWith('');
     vi.clearAllMocks();
   });
 });

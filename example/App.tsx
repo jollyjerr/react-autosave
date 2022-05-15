@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import { useAutosave } from '..';
 
 function App() {
+  const [showForm, setShowForm] = useState(true);
   const [text, setText] = useState('hello world');
   const [value, setValue] = useState(text);
-
-  useAutosave({ data: text, onSave: setValue });
 
   return (
     <div
@@ -21,18 +20,26 @@ function App() {
         padding: 16,
       }}
     >
-      <input
-        type="text"
-        data-testid="input"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
+      {showForm ? <Form setText={setText} text={text} setValue={setValue} /> : null}
       <p>
         Save function called with:{' '}
         <span style={{ fontWeight: 'bold' }}>{value}</span>
       </p>
+      <button onClick={() => setShowForm(prev => !prev)}>Toggle form</button>
     </div>
   );
 }
+
+const Form = ({text, setText, setValue}: {text: string, setText: Dispatch<SetStateAction<string>>, setValue: Dispatch<SetStateAction<string>>}) => {
+  useAutosave({ data: text, onSave: setValue });
+  return (
+    <input
+      type="text"
+      data-testid="input"
+      value={text}
+      onChange={(e) => setText(e.target.value)}
+    />
+  );
+};
 
 export default App;

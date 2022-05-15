@@ -7,8 +7,9 @@ import Autosave from './Autosave';
 
 type TestProps = {
   onSave: (data: any) => Promise<any>;
+  saveOnUnmount?: boolean;
 };
-function TestComponent({ onSave }: TestProps) {
+function TestComponent({ onSave, saveOnUnmount = true }: TestProps) {
   const [data, setdata] = React.useState('hello world');
   const [showForm, setShowForm] = React.useState(true);
   return showForm ? (
@@ -19,7 +20,7 @@ function TestComponent({ onSave }: TestProps) {
         value={data}
         onChange={(e) => setdata(e.target.value)}
       />
-      <Autosave data={data} onSave={onSave} />
+      <Autosave data={data} onSave={onSave} saveOnUnmount={saveOnUnmount} />
       <button
         type="button"
         data-testid="unmount"
@@ -88,6 +89,18 @@ describe('<Autosave />', () => {
     await user.click(screen.getByTestId('unmount'));
 
     expect(saveFunction).toHaveBeenCalledTimes(1);
+    vi.clearAllMocks();
+  });
+
+  it('Can toggle off saving when unmounted', async () => {
+    vi.useFakeTimers();
+    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const saveFunction = vi.fn();
+    render(<TestComponent onSave={saveFunction} saveOnUnmount={false} />);
+
+    await user.click(screen.getByTestId('unmount'));
+
+    expect(saveFunction).toHaveBeenCalledTimes(0);
     vi.clearAllMocks();
   });
 });

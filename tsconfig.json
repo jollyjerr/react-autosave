@@ -14,8 +14,10 @@
     "resolveJsonModule": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["vitest/globals"]
   },
   "include": ["src"],
+  "exclude": ["**/*.test.*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

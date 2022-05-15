@@ -7,7 +7,7 @@ import useAutosave from './useAutosave';
 
 function UseAutosaveComponent({ onSave }: { onSave: () => any }) {
   const [text, setText] = React.useState('hello world');
-  useAutosave({ data: text, onSave, interval: 1 });
+  useAutosave({ data: text, onSave });
   return (
     <div>
       <input
@@ -21,28 +21,29 @@ function UseAutosaveComponent({ onSave }: { onSave: () => any }) {
 }
 
 describe('useAutosave', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
   afterEach(() => {
-    vi.restoreAllMocks();
     cleanup();
   });
 
-  it('Does not try and save new data onChange', () => {
+  it('Does not try and save new data onChange', async () => {
     const saveFunction = vi.fn();
     render(<UseAutosaveComponent onSave={saveFunction} />);
-    userEvent.type(screen.getByTestId('input'), 'Some new content');
+    await userEvent.type(screen.getByTestId('input'), 'Some new content');
     expect(saveFunction).not.toHaveBeenCalled();
   });
 
   it('Calls a save function when given time', async () => {
+    vi.useFakeTimers();
+    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
     const saveFunction = vi.fn();
     render(<UseAutosaveComponent onSave={saveFunction} />);
+
+    await user.type(screen.getByTestId('input'), 'Some new content');
     act(() => {
-      userEvent.type(screen.getByTestId('input'), 'Some new content');
       vi.runAllTimers();
     });
+
     expect(saveFunction).toHaveBeenCalledTimes(1);
+    vi.clearAllMocks();
   });
 });

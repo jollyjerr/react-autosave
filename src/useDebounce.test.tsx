@@ -37,7 +37,6 @@ describe('useDebounce', () => {
   it('Updates after debounce', async () => {
     vi.useFakeTimers();
     const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
-
     render(<DebounceComponent />);
 
     await user.type(screen.getByTestId('input'), ' Some new content');
@@ -48,7 +47,6 @@ describe('useDebounce', () => {
     expect(screen.queryAllByText('hello world Some new content').length).toBe(
       1,
     );
-
     vi.clearAllMocks();
   });
 });

@@ -19,7 +19,7 @@ function TestComponent({ onSave }: TestProps) {
         value={data}
         onChange={(e) => setdata(e.target.value)}
       />
-      <Autosave data={data} interval={1} onSave={onSave} />
+      <Autosave data={data} onSave={onSave} />
       <button
         type="button"
         data-testid="unmount"
@@ -36,12 +36,8 @@ function TestComponent({ onSave }: TestProps) {
 }
 
 describe('<Autosave />', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
   afterEach(() => {
     cleanup();
-    vi.restoreAllMocks();
   });
 
   it('Renders without crashing', () => {
@@ -61,31 +57,37 @@ describe('<Autosave />', () => {
     render(testCustomInterface);
   });
 
-  it('Does not try and save new data onChange', () => {
+  it('Does not try and save new data onChange', async () => {
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} />);
-    userEvent.type(screen.getByTestId('input'), 'Some new content');
+    await userEvent.type(screen.getByTestId('input'), 'Some new content');
     expect(saveFunction).not.toHaveBeenCalled();
   });
 
-  it('Calls the save function when given time', () => {
+  it('Calls the save function when given time', async () => {
     const saveFunction = vi.fn();
+    vi.useFakeTimers();
+    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
     render(<TestComponent onSave={saveFunction} />);
+
+    await user.type(screen.getByTestId('input'), 'Some new content');
     act(() => {
-      userEvent.type(screen.getByTestId('input'), 'Some new content');
       vi.runAllTimers();
     });
+
     expect(saveFunction).toHaveBeenCalledTimes(1);
+    vi.clearAllMocks();
   });
 
   it('Calls the save function when being unmounted', async () => {
+    vi.useFakeTimers();
+    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} />);
-    await act(async () => {
-      await userEvent.type(screen.getByTestId('input'), 'Some new content');
-      vi.runAllTimers();
-      userEvent.click(screen.getByTestId('unmount'));
-    });
-    expect(saveFunction).toHaveBeenCalledTimes(2);
+
+    await user.click(screen.getByTestId('unmount'));
+
+    expect(saveFunction).toHaveBeenCalledTimes(1);
+    vi.clearAllMocks();
   });
 });

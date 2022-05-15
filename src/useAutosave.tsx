@@ -14,7 +14,7 @@ function useAutosave<TData, TReturn>({
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;
-    } else if (debouncedValueToSave) {
+    } else {
       onSave(debouncedValueToSave);
     }
   }, [debouncedValueToSave, onSave]);

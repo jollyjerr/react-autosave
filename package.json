@@ -1,25 +1,16 @@
 {
   "name": "react-autosave",
   "version": "0.3.1",
-  "description": "A super simple debouncing component/hook to auto save controlled form values as they are updated",
+  "description": "A component or hook to auto save controlled form values as they are updated",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist.js",
   "module": "index.es.js",
   "files": [
-    "Autosave.d.ts",
-    "Autosave.d.ts.map",
-    "index.d.ts",
-    "index.d.ts.map",
-    "index.es.js",
-    "index.js",
-    "props.d.ts",
-    "props.d.ts.map",
-    "useAutosave.d.ts",
-    "useAutosave.d.ts.map",
-    "useDebounce.d.ts",
-    "useDebounce.d.ts.map"
+    "dist.d.ts",
+    "dist.js",
+    "dist.js.map"
   ],
   "types": "index.d.ts",
   "publishConfig": {
@@ -31,7 +22,7 @@
     "form"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf build && spack && tsc --emitDeclarationOnly --outFile build/dist.d.ts",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:check": "prettier -l 'src/**/*.{ts,tsx,js,json,md}'",
     "lint": "eslint ./src/**/*.{ts,tsx}",
@@ -40,45 +31,20 @@
     "postpublish": "git clean -fd"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-react": "^7.16.7",
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@testing-library/dom": "^8.13.0",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^14.2.0",
-    "@types/jest": "^27.5.1",
-    "@types/lodash": "^4.14.182",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.183",
+    "@swc/jest": "^0.2.21",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
-    "@yarnpkg/sdks": "^2.6.2",
-    "babel-jest": "^27.5.1",
-    "eslint": "^8.15.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-import-resolver-node": "^0.3.6",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.2.2",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "jest": "^27.5.1",
-    "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-test-renderer": "^18.1.0",
-    "rollup": "^2.73.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.31.2",
-    "ts-jest": "^27.1.4",
-    "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "react": "^17.x.x || ^18.x.x",
     "react-dom": "^17.x.x || ^18.x.x"
+  },
+  "dependencies": {
+    "react-autosave": "^0.3.1"
   }
 }

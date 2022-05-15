@@ -1,0 +1,21 @@
+{
+  "minify": true,
+  "module": {
+    "type": "commonjs"
+  },
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "minify": {
+      "compress": true,
+      "mangle": true,
+      "format": {
+        "comments": "all"
+      }
+    }
+  }
+}

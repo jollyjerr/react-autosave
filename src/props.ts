@@ -10,5 +10,5 @@ export interface CommonProps<TData, TReturn> {
 export interface AutosaveProps<TData, TReturn>
   extends CommonProps<TData, TReturn> {
   /** JSX.Element to return */
-  element?: JSX.Element;
+  element?: JSX.Element | null;
 }

@@ -5,11 +5,11 @@ function useDebounce<TData>(data: TData, interval: number) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const handler = window.setTimeout(() => {
+      const handler = setTimeout(() => {
         setLiveData(data);
       }, interval);
       return () => {
-        window.clearTimeout(handler);
+        clearTimeout(handler);
       };
     }
   }, [data, interval]);

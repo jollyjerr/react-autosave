@@ -98,13 +98,16 @@ npm i react-autosave
 | data                |        TData         |                         The controlled form value to be auto saved |
 | onSave              | (data: TData) => any |                            The callback function to save your data |
 | interval (optional) |        number        | The number of milliseconds between save attempts. Defaults to 2000 |
+| saveOnUnmount (optional) | boolean         | Defaults to true. Set to false to prevent saving on unmount        |
 
 ### Contributing
 
 Issues and PRs are more than welcome. Please clone the repo and setup your environment with:
 
 ```sh
-yarn
+pnpm
 ```
 
-The test suite can be run with `yarn test`
+The test suite can be run with `pnpm test`
+Buid the library with `pnpm build`
+A demo page can be viewed with `pnpm build && pnpm dev`

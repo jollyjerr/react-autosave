@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/dm/react-autosave)
 ![minified size](https://img.shields.io/bundlephobia/min/react-autosave?color=green)
 
-> An automagic component and hook to auto save controlled form values as they are updated.
+> An automagic component or hook to auto save controlled form values as they are updated.
 
 react-autosave is an extremely lightweight component or hook that periodically triggers a callback function if, and only if, the value to update has changed.
 Typically, this is used to make API calls when a user stops typing for a second in some input, but you could technically use this for any side effect you wanted to debounce. 🎉
@@ -20,21 +20,6 @@ import { Autosave, useAutosave } from 'react-autosave';
 
 const updateBlog = (data) => axios.post('myapi/blog/123', { text: data });
 
-// Via component
-const EditBlogForm = () => {
-  const [blogText, setBlogText] = React.useState('hello world');
-  return (
-    <div>
-      <input
-        type="text"
-        value={blogText}
-        onChange={(e) => setBlogText(e.target.value)}
-      />
-      <Autosave data={blogText} onSave={updateBlog} />
-    </div>
-  );
-};
-
 // Via hook
 const EditBlogFormWithHook = () => {
   const [blogText, setBlogText] = React.useState('hello world');
@@ -46,6 +31,21 @@ const EditBlogFormWithHook = () => {
         value={blogText}
         onChange={(e) => setBlogText(e.target.value)}
       />
+    </div>
+  );
+};
+
+// Via component
+const EditBlogForm = () => {
+  const [blogText, setBlogText] = React.useState('hello world');
+  return (
+    <div>
+      <input
+        type="text"
+        value={blogText}
+        onChange={(e) => setBlogText(e.target.value)}
+      />
+      <Autosave data={blogText} onSave={updateBlog} />
     </div>
   );
 };

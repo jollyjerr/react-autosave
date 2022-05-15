@@ -1,50 +1,37 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es2021: true,
     'jest/globals': true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:jest/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jest'],
   rules: {
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
-    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-        tsx: 'never',
-        js: 'never',
-        jsx: 'never',
-      },
-    ],
-    'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': ['error'],
-    'consistent-return': 'off',
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    '@typescript-eslint/no-unused-vars': 0,
-    'no-unused-vars': 'off',
-    'jest/expect-expect': 'off',
-    'object-curly-newline': 'off',
-    'arrow-body-style': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   settings: {
-    'import/resolver': {
-      typescript: {},
-    },
-  },
-  globals: {
-    JSX: true,
-  },
+    react: {
+      version: 'detect'
+    }
+  }
 };

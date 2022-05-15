@@ -1,12 +1,11 @@
-import React from 'react';
 import { AutosaveProps } from './props';
 import useAutosave from './useAutosave';
 
-const Autosave = <TData extends unknown, TReturn extends unknown>({
+const Autosave = <TData, TReturn>({
   data,
   onSave,
   interval = 2000,
-  element = <></>,
+  element = null,
 }: AutosaveProps<TData, TReturn>) => {
   useAutosave({ data, onSave, interval });
   return element;

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const useDebounce = <T extends unknown>(data: T, interval: number) => {
-  const [liveData, setLiveData] = useState<T>(data);
+function useDebounce<TData>(data: TData, interval: number) {
+  const [liveData, setLiveData] = useState<TData>(data);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const handler = window.setTimeout(() => {
         setLiveData(data);
       }, interval);
@@ -15,6 +15,6 @@ const useDebounce = <T extends unknown>(data: T, interval: number) => {
   }, [data, interval]);
 
   return liveData;
-};
+}
 
 export default useDebounce;

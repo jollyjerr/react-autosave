@@ -1,12 +1,12 @@
-import { useRef, useEffect } from "react";
-import { CommonProps } from "./props";
-import useDebounce from "./useDebounce";
+import { useRef, useEffect } from 'react';
+import { CommonProps } from './props';
+import useDebounce from './useDebounce';
 
-const useAutosave = <TData extends unknown, TReturn extends unknown>({
+function useAutosave<TData, TReturn>({
   data,
   onSave,
   interval = 2000,
-}: CommonProps<TData, TReturn>) => {
+}: CommonProps<TData, TReturn>) {
   const valueOnCleanup = useRef(data);
   const initialRender = useRef(true);
   const debouncedValueToSave = useDebounce(data, interval);
@@ -23,11 +23,9 @@ const useAutosave = <TData extends unknown, TReturn extends unknown>({
     valueOnCleanup.current = data;
   }, [data]);
 
-  useEffect(() => {
-    return () => {
-      onSave(valueOnCleanup.current);
-    };
+  useEffect(() => () => {
+    onSave(valueOnCleanup.current);
   }, [onSave]);
-};
+}
 
 export default useAutosave;

@@ -1,7 +1,7 @@
-import { AutosaveProps } from "./props";
-import useAutosave from "./useAutosave";
+import { AutosaveProps } from './props';
+import useAutosave from './useAutosave';
 
-const Autosave = <TData extends unknown, TReturn extends unknown>({
+const Autosave = <TData, TReturn>({
   data,
   onSave,
   interval = 2000,

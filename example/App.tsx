@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useAutosave } from "..";
+import React from 'react';
+import { useState } from 'react';
+import { useAutosave } from '..';
 
 function App() {
-  const [text, setText] = useState("hello world");
+  const [text, setText] = useState('hello world');
   const [value, setValue] = useState(text);
 
   useAutosave({ data: text, onSave: setValue });
@@ -10,12 +11,12 @@ function App() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
         maxWidth: 800,
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginLeft: 'auto',
+        marginRight: 'auto',
         gap: 8,
         padding: 16,
       }}
@@ -27,8 +28,8 @@ function App() {
         onChange={(e) => setText(e.target.value)}
       />
       <p>
-        Save function called with:{" "}
-        <span style={{ fontWeight: "bold" }}>{value}</span>
+        Save function called with:{' '}
+        <span style={{ fontWeight: 'bold' }}>{value}</span>
       </p>
     </div>
   );

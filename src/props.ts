@@ -5,6 +5,8 @@ export interface CommonProps<TData, TReturn> {
   onSave: (data: TData) => Promise<TReturn> | TReturn | void;
   /** The number of milliseconds between save attempts. Defaults to 2000 */
   interval?: number;
+  /** Set to false if you do not want the save function to fire on unmount */
+  saveOnUnmount?: boolean;
 }
 
 export interface AutosaveProps<TData, TReturn>

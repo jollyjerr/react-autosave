@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 5-15-22
+
+## Added
+
+- A toggle to cancel saving on unmount `saveOnUnmount`
+- The ability to save falsy values
+- Dev page using vite to preview current build
+- React 18 support
+
+## Changed
+
+- Package builds using vite
+- Switched to PNPM
+- Test run using vitest
+- All dependencies bumped to latest version
+
 ## [0.3.1] - 12-21-21
 
 ## Added

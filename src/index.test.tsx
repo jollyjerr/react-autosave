@@ -1,5 +1,4 @@
 import { cleanup, render, screen } from '@testing-library/react';
-
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
@@ -9,7 +8,7 @@ import useAutosave from './useAutosave';
 
 jest.useFakeTimers();
 
-const DebounceComponent = () => {
+function DebounceComponent() {
   const [data, setdata] = React.useState('hello world');
   const value = useDebounce(data, 1);
   return (
@@ -23,7 +22,7 @@ const DebounceComponent = () => {
       <h1>{value}</h1>
     </div>
   );
-};
+}
 
 describe('useDebounce', () => {
   it('Debounces data being updated', () => {
@@ -48,7 +47,7 @@ describe('useDebounce', () => {
   afterEach(cleanup);
 });
 
-const UseAutosaveComponent = ({ onSave }: { onSave: () => any }) => {
+function UseAutosaveComponent({ onSave }: { onSave: () => any }) {
   const [text, setText] = React.useState('hello world');
   useAutosave({ data: text, onSave, interval: 1 });
   return (
@@ -61,7 +60,7 @@ const UseAutosaveComponent = ({ onSave }: { onSave: () => any }) => {
       />
     </div>
   );
-};
+}
 
 describe('useAutosave', () => {
   it('Does not try and save new data onChange', () => {
@@ -87,7 +86,7 @@ describe('useAutosave', () => {
 type TestProps = {
   onSave: (data: any) => Promise<any>;
 };
-const TestComponent = ({ onSave }: TestProps) => {
+function TestComponent({ onSave }: TestProps) {
   const [data, setdata] = React.useState('hello world');
   const [showForm, setShowForm] = React.useState(true);
   return showForm ? (
@@ -112,7 +111,7 @@ const TestComponent = ({ onSave }: TestProps) => {
   ) : (
     <div data-testid="newpage">A new page!</div>
   );
-};
+}
 
 describe('<Autosave />', () => {
   it('Renders without crashing', () => {

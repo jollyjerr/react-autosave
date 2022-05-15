@@ -38,6 +38,7 @@ module.exports = {
     'jest/expect-expect': 'off',
     'object-curly-newline': 'off',
     'arrow-body-style': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
   settings: {
     'import/resolver': {

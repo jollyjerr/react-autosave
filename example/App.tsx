@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
-import { useAutosave } from '..';
+import { useAutosave } from '../src';
 
 function App() {
   const [showForm, setShowForm] = useState(true);

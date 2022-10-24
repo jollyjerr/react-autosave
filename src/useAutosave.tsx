@@ -10,27 +10,33 @@ function useAutosave<TData, TReturn>({
 }: CommonProps<TData, TReturn>) {
   const valueOnCleanup = useRef(data);
   const initialRender = useRef(true);
+  const handleSave = useRef(onSave);
+
   const debouncedValueToSave = useDebounce(data, interval);
 
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;
     } else {
-      onSave(debouncedValueToSave);
+      handleSave.current(debouncedValueToSave);
     }
-  }, [debouncedValueToSave, onSave]);
+  }, [debouncedValueToSave]);
 
   useEffect(() => {
     valueOnCleanup.current = data;
   }, [data]);
 
+  useEffect(() => {
+    handleSave.current = onSave;
+  }, [onSave]);
+
   useEffect(
     () => () => {
       if (saveOnUnmount) {
-        onSave(valueOnCleanup.current);
+        handleSave.current(valueOnCleanup.current);
       }
     },
-    [onSave, saveOnUnmount],
+    [saveOnUnmount],
   );
 }
 

@@ -23,6 +23,7 @@ jobs:
       - run: npm install -g pnpm
       - run: pnpm i
       - run: pnpm lint
+      - run: pnpm format:check
       - run: pnpm test:coverage
       - run: pnpm build
       - run: bash <(curl -s https://codecov.io/bash)

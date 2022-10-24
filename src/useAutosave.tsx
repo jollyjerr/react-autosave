@@ -6,7 +6,7 @@ function useAutosave<TData, TReturn>({
   data,
   onSave,
   interval = 2000,
-  saveOnUnmount = true
+  saveOnUnmount = true,
 }: CommonProps<TData, TReturn>) {
   const valueOnCleanup = useRef(data);
   const initialRender = useRef(true);
@@ -24,11 +24,14 @@ function useAutosave<TData, TReturn>({
     valueOnCleanup.current = data;
   }, [data]);
 
-  useEffect(() => () => {
-    if (saveOnUnmount) {
-      onSave(valueOnCleanup.current);
-    }
-  }, [onSave, saveOnUnmount]);
+  useEffect(
+    () => () => {
+      if (saveOnUnmount) {
+        onSave(valueOnCleanup.current);
+      }
+    },
+    [onSave, saveOnUnmount],
+  );
 }
 
 export default useAutosave;

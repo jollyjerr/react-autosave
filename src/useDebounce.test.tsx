@@ -36,7 +36,9 @@ describe('useDebounce', () => {
 
   it('Updates after debounce', async () => {
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     render(<DebounceComponent />);
 
     await user.type(screen.getByTestId('input'), ' Some new content');

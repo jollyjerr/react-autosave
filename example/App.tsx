@@ -7,6 +7,8 @@ function App() {
   const [text, setText] = useState('hello world');
   const [value, setValue] = useState(text);
 
+  const unoptimizedSaveFunction = (data: string) => setValue(data);
+
   return (
     <div
       style={{
@@ -21,7 +23,11 @@ function App() {
       }}
     >
       {showForm ? (
-        <Form setText={setText} text={text} setValue={setValue} />
+        <Form
+          setText={setText}
+          text={text}
+          setValue={unoptimizedSaveFunction}
+        />
       ) : null}
       <p>
         Save function called with:{' '}
@@ -39,7 +45,7 @@ const Form = ({
 }: {
   text: string;
   setText: Dispatch<SetStateAction<string>>;
-  setValue: Dispatch<SetStateAction<string>>;
+  setValue: (data: string) => void;
 }) => {
   useAutosave({ data: text, onSave: setValue });
   return (

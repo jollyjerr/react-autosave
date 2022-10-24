@@ -12,7 +12,7 @@ Typically, this is used to make API calls when a user stops typing for a second 
 
 ## Examples
 
-```jsx
+```tsx
 import React from 'react';
 import axios from 'axios';
 
@@ -46,30 +46,6 @@ const EditBlogForm = () => {
         onChange={(e) => setBlogText(e.target.value)}
       />
       <Autosave data={blogText} onSave={updateBlog} />
-    </div>
-  );
-};
-```
-
-Notice that the callback function **needs to be memoized**. If you are declaring the function within your component, wrap it in a use callback:
-
-```tsx
-const EditBlogFormWithHook = () => {
-  const [blogText, setBlogText] = React.useState('hello world');
-
-  // https://reactjs.org/docs/hooks-reference.html#usecallback
-  const updateBlog = React.useCallback((newText: string) => {
-    axios.post('myapi/blog/123', { text: newText }).catch(console.error);
-  }, []);
-
-  useAutosave({ data: blogText, onSave: updateBlog });
-  return (
-    <div>
-      <input
-        type="text"
-        value={blogText}
-        onChange={(e) => setBlogText(e.target.value)}
-      />
     </div>
   );
 };

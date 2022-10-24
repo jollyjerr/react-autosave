@@ -20,17 +20,27 @@ function App() {
         padding: 16,
       }}
     >
-      {showForm ? <Form setText={setText} text={text} setValue={setValue} /> : null}
+      {showForm ? (
+        <Form setText={setText} text={text} setValue={setValue} />
+      ) : null}
       <p>
         Save function called with:{' '}
         <span style={{ fontWeight: 'bold' }}>{value}</span>
       </p>
-      <button onClick={() => setShowForm(prev => !prev)}>Toggle form</button>
+      <button onClick={() => setShowForm((prev) => !prev)}>Toggle form</button>
     </div>
   );
 }
 
-const Form = ({text, setText, setValue}: {text: string, setText: Dispatch<SetStateAction<string>>, setValue: Dispatch<SetStateAction<string>>}) => {
+const Form = ({
+  text,
+  setText,
+  setValue,
+}: {
+  text: string;
+  setText: Dispatch<SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
+}) => {
   useAutosave({ data: text, onSave: setValue });
   return (
     <input

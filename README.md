@@ -93,12 +93,12 @@ npm i react-autosave
 
 ## API
 
-| Prop                |         Type         |                                                        Description |
-| ------------------- | :------------------: | -----------------------------------------------------------------: |
-| data                |        TData         |                         The controlled form value to be auto saved |
-| onSave              | (data: TData) => any |                            The callback function to save your data |
-| interval (optional) |        number        | The number of milliseconds between save attempts. Defaults to 2000 |
-| saveOnUnmount (optional) | boolean         | Defaults to true. Set to false to prevent saving on unmount        |
+| Prop                     |         Type         |                                                        Description |
+| ------------------------ | :------------------: | -----------------------------------------------------------------: |
+| data                     |        TData         |                         The controlled form value to be auto saved |
+| onSave                   | (data: TData) => any |                            The callback function to save your data |
+| interval (optional)      |        number        | The number of milliseconds between save attempts. Defaults to 2000 |
+| saveOnUnmount (optional) |       boolean        |        Defaults to true. Set to false to prevent saving on unmount |
 
 ### Contributing
 

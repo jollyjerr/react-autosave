@@ -68,7 +68,9 @@ describe('<Autosave />', () => {
   it('Calls the save function when given time', async () => {
     const saveFunction = vi.fn();
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     render(<TestComponent onSave={saveFunction} />);
 
     await user.type(screen.getByTestId('input'), 'Some new content');
@@ -82,7 +84,9 @@ describe('<Autosave />', () => {
 
   it('Calls the save function when being unmounted', async () => {
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} />);
 
@@ -94,7 +98,9 @@ describe('<Autosave />', () => {
 
   it('Can toggle off saving when unmounted', async () => {
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} saveOnUnmount={false} />);
 

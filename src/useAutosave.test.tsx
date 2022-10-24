@@ -5,7 +5,13 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import useAutosave from './useAutosave';
 
-function UseAutosaveComponent({ onSave, initialState = 'hello world' }: { onSave: () => any, initialState?: string }) {
+function UseAutosaveComponent({
+  onSave,
+  initialState = 'hello world',
+}: {
+  onSave: () => any;
+  initialState?: string;
+}) {
   const [text, setText] = React.useState(initialState);
   useAutosave({ data: text, onSave });
   return (
@@ -34,7 +40,9 @@ describe('useAutosave', () => {
 
   it('Calls a save function when given time', async () => {
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     const saveFunction = vi.fn();
     render(<UseAutosaveComponent onSave={saveFunction} />);
 
@@ -49,7 +57,9 @@ describe('useAutosave', () => {
 
   it('Calls save function for falsy values', async () => {
     vi.useFakeTimers();
-    const user = userEvent.setup({advanceTimers: (time) => vi.advanceTimersByTime(time)});
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
     const saveFunction = vi.fn();
     render(<UseAutosaveComponent onSave={saveFunction} initialState={'1'} />);
 

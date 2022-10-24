@@ -31,7 +31,7 @@
     "lint:fix": "pnpm run lint --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "ci": "pnpm run lint && pnpm run format"
+    "ci": "pnpm run lint && pnpm run format:check && CI=true pnpm run test:coverage && pnpm run build"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",

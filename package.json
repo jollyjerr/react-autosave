@@ -1,20 +1,21 @@
 {
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A component or hook to auto save controlled form values as they are updated",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",
   "name": "react-autosave",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/react-autosave.umd.js",
-  "module": "./dist/react-autosave.es.js",
+  "main": "./dist/react-autosave.umd.cjs",
+  "module": "./dist/react-autosave.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-autosave.es.js",
-      "require": "./dist/react-autosave.umd.js"
+      "import": "./dist/react-autosave.js",
+      "require": "./dist/react-autosave.umd.cjs"
     }
   },
   "keywords": [
@@ -33,30 +34,34 @@
     "format:check": "prettier . --check",
     "ci": "pnpm run lint && pnpm run format:check && CI=true pnpm run test:coverage && pnpm run build"
   },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "devDependencies": {
-    "@testing-library/dom": "^8.17.1",
+    "@testing-library/dom": "^8.19.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.0.0",
-    "@types/node": "^18.7.16",
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "@vitejs/plugin-react": "^2.1.0",
-    "@vitest/coverage-c8": "^0.23.1",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.15",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "@vitejs/plugin-react": "^3.0.0",
+    "@vitest/coverage-c8": "^0.25.8",
     "c8": "^7.12.0",
-    "eslint": "^8.23.0",
-    "eslint-plugin-jest": "^27.0.3",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint": "^8.29.0",
+    "eslint-plugin-jest": "^27.1.6",
+    "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jsdom": "^20.0.0",
-    "prettier": "^2.7.1",
+    "jsdom": "^20.0.3",
+    "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.8.3",
-    "vite": "^3.1.0",
-    "vitest": "^0.23.1"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.1",
+    "vitest": "^0.25.8"
   },
   "peerDependencies": {
     "react": "^17.x.x || ^18.x.x",

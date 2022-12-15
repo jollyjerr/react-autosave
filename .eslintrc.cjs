@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
+  ignorePatterns: ['*.js', '*.cjs', 'dist/'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

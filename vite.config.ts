@@ -13,7 +13,7 @@ export default defineConfig({
       external: ['react'],
       output: {
         globals: {
-          react: 'React',
+          react: 'react',
         },
       },
     },

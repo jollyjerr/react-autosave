@@ -5,16 +5,17 @@
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",
   "name": "react-autosave",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/react-autosave.umd.js",
-  "module": "./dist/react-autosave.mjs",
+  "main": "./dist/react-autosave.umd.cjs",
+  "module": "./dist/react-autosave.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-autosave.mjs",
-      "require": "./dist/react-autosave.umd.js"
+      "import": "./dist/react-autosave.js",
+      "require": "./dist/react-autosave.umd.cjs"
     }
   },
   "keywords": [
@@ -32,6 +33,10 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "ci": "pnpm run lint && pnpm run format:check && CI=true pnpm run test:coverage && pnpm run build"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.19.0",

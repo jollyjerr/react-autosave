@@ -67,7 +67,7 @@ describe('<Autosave />', () => {
 
   it('Calls the save function when given time', async () => {
     const saveFunction = vi.fn();
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });
@@ -83,7 +83,7 @@ describe('<Autosave />', () => {
   });
 
   it('Calls the save function when being unmounted', async () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });
@@ -97,7 +97,7 @@ describe('<Autosave />', () => {
   });
 
   it('Can toggle off saving when unmounted', async () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });

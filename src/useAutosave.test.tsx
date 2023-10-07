@@ -39,7 +39,7 @@ describe('useAutosave', () => {
   });
 
   it('Calls a save function when given time', async () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });
@@ -56,7 +56,7 @@ describe('useAutosave', () => {
   });
 
   it('Calls save function for falsy values', async () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });

@@ -35,7 +35,7 @@ describe('useDebounce', () => {
   });
 
   it('Updates after debounce', async () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
       advanceTimers: (time) => vi.advanceTimersByTime(time),
     });

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Changed
 
-- Fix type definitions for ESM and formally remove cjs support 
+- Fix type definitions for ESM and formally remove cjs support
 - Updated all dev dependencies and tooling
 
 ## [0.4.2]

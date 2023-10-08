@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 export interface CommonProps<TData, TReturn> {
   /** The controlled form value to be auto saved   */
   data: TData;

@@ -1,5 +1,5 @@
 {
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A component or hook to auto save controlled form values as they are updated",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
@@ -9,15 +9,17 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/react-autosave.umd.cjs",
-  "module": "./dist/react-autosave.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-autosave.js",
-      "require": "./dist/react-autosave.umd.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/react-autosave.js"
+      }
     }
   },
+  "main": "./dist/react-autosave.js",
+  "module": "./dist/react-autosave.js",
+  "types": "./dist/index.d.ts",
   "keywords": [
     "react",
     "autosave",
@@ -25,7 +27,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && tsc --emitDeclarationOnly",
+    "build": "tsc --noEmit && vite build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint src/**",
@@ -60,6 +62,7 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.11",
+    "vite-plugin-dts": "^3.6.0",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {

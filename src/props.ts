@@ -4,7 +4,7 @@ export interface CommonProps<TData, TReturn> {
   /** The controlled form value to be auto saved   */
   data: TData;
   /** Callback function to save your data */
-  onSave: (data: TData) => Promise<TReturn> | TReturn | void;
+  onSave: (data: TData, isOnUnmount: boolean) => Promise<TReturn> | TReturn | void;
   /** The number of milliseconds between save attempts. Defaults to 2000 */
   interval?: number;
   /** Set to false if you do not want the save function to fire on unmount */

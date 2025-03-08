@@ -1,8 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { cleanup, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
+import React, { act } from 'react';
 import useAutosave from './useAutosave';
 
 function UseAutosaveComponent({
@@ -68,7 +67,7 @@ describe('useAutosave', () => {
       vi.runAllTimers();
     });
 
-    expect(saveFunction).toBeCalledWith('');
+    expect(saveFunction).toHaveBeenCalledWith('');
     vi.clearAllMocks();
   });
 });

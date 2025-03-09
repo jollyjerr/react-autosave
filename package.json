@@ -1,6 +1,6 @@
 {
-  "version": "0.4.4",
-  "description": "A component or hook to auto save controlled form values as they are updated",
+  "version": "0.5.0",
+  "description": "A lightweight solution for auto saving controlled form values",
   "repository": "https://github.com/jollyjerr/react-autosave",
   "author": "jollyjerr <jollyjerr@gmail.com>",
   "license": "MIT",

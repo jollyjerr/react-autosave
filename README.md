@@ -1,14 +1,14 @@
 # react-autosave
 
-![Tests](https://github.com/jollyjerr/react-autosave/workflows/Tests/badge.svg)
+[![Tests](https://github.com/jollyjerr/react-autosave/actions/workflows/ci.yml/badge.svg)](https://github.com/jollyjerr/react-autosave/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/jollyjerr/react-autosave/branch/main/graph/badge.svg?token=K7C88VK5GE)](https://codecov.io/gh/jollyjerr/react-autosave)
 ![npm](https://img.shields.io/npm/dm/react-autosave)
 ![minified size](https://img.shields.io/bundlephobia/min/react-autosave?color=green)
 
-> An automagic component or hook to auto save controlled form values as they are updated.
+> Auto save controlled form values as they are updated.
 
-react-autosave is an extremely lightweight component or hook that periodically triggers a callback function if, and only if, the value to update has changed.
-Typically, this is used to make API calls when a user stops typing for a second in some input, but you could technically use this for any side effect you wanted to debounce. 🎉
+react-autosave is a lightweight solution for auto saving controlled form values.
+It handles many edge cases and guarantees a good user experience.
 
 ## Examples
 
@@ -55,6 +55,7 @@ const EditBlogForm = () => {
 
 ```sh
 yarn add react-autosave
+
 # or with npm...
 npm i react-autosave
 ```

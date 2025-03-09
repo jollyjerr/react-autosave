@@ -81,6 +81,20 @@ describe('<Autosave />', () => {
     vi.clearAllMocks();
   });
 
+  it('Does not call save function if data is fresh', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    const user = userEvent.setup({
+      advanceTimers: (time) => vi.advanceTimersByTime(time),
+    });
+    const saveFunction = vi.fn();
+    render(<TestComponent onSave={saveFunction} />);
+
+    await user.click(screen.getByTestId('unmount'));
+
+    expect(saveFunction).toHaveBeenCalledTimes(0);
+    vi.clearAllMocks();
+  });
+
   it('Calls the save function when being unmounted', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({
@@ -89,6 +103,7 @@ describe('<Autosave />', () => {
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} />);
 
+    await user.type(screen.getByTestId('input'), 'Some new content');
     await user.click(screen.getByTestId('unmount'));
 
     expect(saveFunction).toHaveBeenCalledTimes(1);
@@ -103,6 +118,7 @@ describe('<Autosave />', () => {
     const saveFunction = vi.fn();
     render(<TestComponent onSave={saveFunction} saveOnUnmount={false} />);
 
+    await user.type(screen.getByTestId('input'), 'Some new content');
     await user.click(screen.getByTestId('unmount'));
 
     expect(saveFunction).toHaveBeenCalledTimes(0);

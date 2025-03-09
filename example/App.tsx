@@ -6,8 +6,12 @@ function App() {
   const [showForm, setShowForm] = useState(true);
   const [text, setText] = useState('hello world');
   const [value, setValue] = useState(text);
+  const [count, setCount] = useState(0);
 
-  const unoptimizedSaveFunction = (data: string) => setValue(data);
+  const unoptimizedSaveFunction = (data: string) => {
+    setCount((p) => p + 1);
+    setValue(data);
+  };
 
   return (
     <div
@@ -30,7 +34,8 @@ function App() {
         />
       ) : null}
       <p>
-        Save function called with:{' '}
+        Save function has been called{' '}
+        <span style={{ fontWeight: 'bold' }}>{count}</span> times. Latest value:{' '}
         <span style={{ fontWeight: 'bold' }}>{value}</span>
       </p>
       <button onClick={() => setShowForm((prev) => !prev)}>Toggle form</button>

@@ -1,8 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { cleanup, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
+import React, { act } from 'react';
 import useDebounce from './useDebounce';
 
 function DebounceComponent() {

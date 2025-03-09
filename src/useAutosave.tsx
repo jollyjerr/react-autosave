@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { CommonProps } from './props';
 import useDebounce from './useDebounce';
 
@@ -18,7 +18,7 @@ function useAutosave<TData, TReturn>({
     if (initialRender.current) {
       initialRender.current = false;
     } else {
-      handleSave.current(debouncedValueToSave);
+      handleSave.current(debouncedValueToSave, false);
     }
   }, [debouncedValueToSave]);
 
@@ -33,7 +33,7 @@ function useAutosave<TData, TReturn>({
   useEffect(
     () => () => {
       if (saveOnUnmount) {
-        handleSave.current(valueOnCleanup.current);
+        handleSave.current(valueOnCleanup.current, true);
       }
     },
     [saveOnUnmount],
